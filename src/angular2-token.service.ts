@@ -157,7 +157,7 @@ export class Angular2TokenService implements CanActivate {
         }
 
         if (
-            registerData.password_confirmation == null && 
+            registerData.password_confirmation == null &&
             registerData.passwordConfirmation != null
         ) {
             registerData.password_confirmation  = registerData.passwordConfirmation;
@@ -371,7 +371,7 @@ export class Angular2TokenService implements CanActivate {
 
         // Get auth data from local storage
         this.getAuthDataFromStorage();
-        
+
         // Merge auth headers to request if set
         if (this.atCurrentAuthData != null) {
             (<any>Object).assign(baseHeaders, {
@@ -407,7 +407,7 @@ export class Angular2TokenService implements CanActivate {
     }
 
     // Check if response is complete and newer, then update storage
-    private handleResponse(response: Observable<Response>): void {
+    public handleResponse(response: Observable<Response>): void {
         response.subscribe(res => {
             this.getAuthHeadersFromResponse(<any>res);
         }, error => {
